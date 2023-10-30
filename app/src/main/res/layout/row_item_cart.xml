@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:weightSum="4"
+    android:gravity="center"
+    android:background="@color/white"
+    android:padding="12dp">
+
+    <ImageView
+        android:id="@+id/img_product"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        tools:src="@drawable/sunimage"
+        android:layout_weight="0.7"/>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2.4"
+        android:orientation="vertical"
+        android:layout_marginStart="16dp">
+        <TextView
+            android:id="@+id/tv_product_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/MediumTextBlack"
+            android:gravity="start"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="This is a product name. This is a product name"/>
+
+        <TextView
+            android:id="@+id/tv_price_per_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="300"
+            android:layout_weight="1.5"
+            style="@style/SmallTextBlack"/>
+        <LinearLayout
+            android:id="@+id/ll_quantity_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/bg_pink_stroke"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <TextView
+                android:id="@+id/tv_minus"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="4dp"
+                android:text="-"
+                android:textColor="@color/pink"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/tv_quantity"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="4dp"
+                tools:text="10"
+                android:text="0"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/tv_plus"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="4dp"
+                android:text="+"
+                android:textColor="@color/pink"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_total_price"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:text="300"
+        style="@style/MediumTextBlack"
+        android:layout_weight="0.8"
+        android:gravity="end"/>
+
+
+</LinearLayout>

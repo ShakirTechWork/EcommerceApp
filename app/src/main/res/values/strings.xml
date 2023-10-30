@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">ShakirTestProject</string>
+    <string name="user_name">User name</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="product_image">Product Image</string>
+    <string name="rupee_symbol">₹</string>
+    <string name="user_password">User Password</string>
+    <string name="login">Login</string>
+    <string name="book_order">Book Order</string>
+    <string name="add">Add</string>
+    <string name="total_bill">Total Bill:</string>
+    <string name="cart_total">Cart Total</string>
+    <string name="total_bill_2">Total Bill</string>
+    <string name="checkout">Checkout</string>
+    <string name="apply_filter">Apply Filter</string>
+    <string name="logout">Logout</string>
+    <string name="view_cart">View Cart</string>
+    <string name="items">Items</string>
+    <string name="retry">Retry</string>
+</resources>
