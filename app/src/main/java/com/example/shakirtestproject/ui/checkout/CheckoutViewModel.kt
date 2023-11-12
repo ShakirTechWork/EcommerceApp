@@ -9,6 +9,7 @@ import com.example.shakirtestproject.models.CartItemModel
 import com.example.shakirtestproject.models.QuantityClickActionModel
 import com.example.shakirtestproject.repositories.AppRepository
 import com.example.shakirtestproject.utils.Utils
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 private const val TAG = "CheckoutViewModel"
@@ -22,7 +23,7 @@ class CheckoutViewModel(private val appRepository: AppRepository) : ViewModel() 
     val cartTotalLiveData: LiveData<Double> get() = _cartTotalLiveData
 
     fun getCartItems() {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             val list = appRepository.getCartItems()
             _cartItemsList.postValue(ArrayList(list))
         }
@@ -41,7 +42,7 @@ class CheckoutViewModel(private val appRepository: AppRepository) : ViewModel() 
             _cartItemsList.value = it
         }
 
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             appRepository.updateCartItemInDatabase(cartItemModel)
         }
 
@@ -52,12 +53,12 @@ class CheckoutViewModel(private val appRepository: AppRepository) : ViewModel() 
             item.productId, item.productName, item.productImage, item.quantity, item.price,
             item.totalItemPrice, item.position
         )
-        Log.d(TAG, "deleteCartItemFromDatabase: ${_cartItemsList.value?.size}")
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             val list = _cartItemsList.value
             list?.let {
                 it.removeAt(item.position)
-                _cartItemsList.value = it
+//                _cartItemsList.value = it
+                _cartItemsList.postValue(it)
             }
             appRepository.deleteCartItemFromDatabase(cartItemModel)
         }

@@ -1,19 +1,30 @@
 package com.example.shakirtestproject.api
 
 import android.util.Log
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.withContext
 import org.json.JSONObject
 import retrofit2.Response
 
 private const val TAG = "NetworkResultEmitter"
+@OptIn(ExperimentalStdlibApi::class)
 fun <T> result(call: suspend () -> Response<T>): Flow<ApiStatus<T?>> = flow {
-
     emit(ApiStatus.Loading)
 
     try {
 
-        val c = call()
+//        Log.d(TAG, "result123: called on: ${Thread.currentThread().name}")
+//        Log.d(TAG, "result123: called on: ${coroutineContext[CoroutineDispatcher.Key]}")
+
+//        val c = call()
+        val c = withContext(Dispatchers.IO) {
+            Log.d(TAG, "result123: API called on: ${Thread.currentThread().name}")
+            Log.d(TAG, "result123: API called on: ${kotlin.coroutines.coroutineContext[CoroutineDispatcher.Key]}")
+            call()
+        }
         c.let {
             if (c.isSuccessful) {
                 emit(ApiStatus.Success(it.body()))

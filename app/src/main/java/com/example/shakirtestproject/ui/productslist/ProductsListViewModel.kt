@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.shakirtestproject.api.ApiStatus
 import com.example.shakirtestproject.models.*
 import com.example.shakirtestproject.repositories.AppRepository
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.Flow
@@ -111,13 +112,13 @@ class ProductsListViewModel(private val appRepository: AppRepository) : ViewMode
     }
 
     private fun updateCartItemInDatabase(cartItemModel: CartItemModel) {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             appRepository.updateCartItemInDatabase(cartItemModel)
         }
     }
 
     private fun deleteCartItemFromDatabase(cartItemModel: CartItemModel) {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             appRepository.deleteCartItemFromDatabase(cartItemModel)
         }
     }

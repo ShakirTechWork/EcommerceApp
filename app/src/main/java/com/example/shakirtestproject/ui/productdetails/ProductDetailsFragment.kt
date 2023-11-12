@@ -9,16 +9,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
-import androidx.navigation.fragment.findNavController
 import coil.load
 import coil.request.CachePolicy
 import com.example.shakirtestproject.Application
 import com.example.shakirtestproject.R
 import com.example.shakirtestproject.api.ApiStatus
 import com.example.shakirtestproject.databinding.FragmentProductDetailsBinding
-import com.example.shakirtestproject.databinding.FragmentProductsListBinding
-import com.example.shakirtestproject.ui.login.UserLoginViewModel
-import com.example.shakirtestproject.ui.login.UserLoginViewModelFactory
 import com.example.shakirtestproject.utils.Utils
 
 private const val TAG = "ProductDetailsFragment"
